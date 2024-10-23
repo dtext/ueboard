@@ -1,8 +1,11 @@
+units:
+  $default_height: cy
+  $default_width: cx
 points:
   zones:
     klein-links:
       anchor:
-        shift: ["-1u", .5u]
+        shift: [-1u, .5u]
       columns:
         col:
       rows:
@@ -13,7 +16,7 @@ points:
         klein:
         ring:
           key.splay: -5
-          key.stagger: .5u
+          key.stagger: .8u
         mittel:
           key.splay: -2
           key.stagger: .5u
@@ -35,17 +38,16 @@ points:
           rows.oben:
             shift: [0.3u, 0]
         eins:
+          rows.extra:
+            stagger: -1u
           rows.unten:
           rows.oben:
             shift: [0.3u, 0]
         zwei:
+          rows.extra:
+            stagger: -1u
           rows.unten:
           rows.oben:
-          key.stagger: -1u
-        drei:
-          rows.unten:
-          rows.oben:
-          key.stagger: -0.7u
   mirror:
-    ref: daumen_drei_unten
+    ref: daumen_zwei_extra
     distance: 3u
