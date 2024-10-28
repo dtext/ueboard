@@ -1,11 +1,13 @@
 units:
   $default_height: cy
   $default_width: cx
+  $default_padding: cy
+  $default_spread: cx
 points:
   zones:
     klein-links:
       anchor:
-        shift: [-1u, .5u]
+        shift: [-cx, .5cy]
       columns:
         col:
       rows:
@@ -15,39 +17,44 @@ points:
       columns:
         klein:
         ring:
-          key.splay: -5
-          key.stagger: .8u
+          key:
+            splay: -7
+            stagger: 16
+            spread: cx+2
         mittel:
-          key.splay: -2
-          key.stagger: .5u
+          key:
+            splay: -3
+            stagger: 10
+            spread: cx+1
         zeige:
           key.stagger: -3
         zeige-rechts:
       rows:
-        bottom:
-        home:
-        top:
+        unten:
+        mitte:
+        oben:
     daumen:
       anchor:
-        ref: matrix_zeige-rechts_bottom
-        shift: [-1u, -2.8u]
+        ref: matrix_zeige-rechts_unten
+        shift: [-17, -52]
         rotate: 55
       columns:
-        null:
-          rows.unten:
-          rows.oben:
-            shift: [0.3u, 0]
         eins:
-          rows.extra:
-            stagger: -1u
           rows.unten:
           rows.oben:
             shift: [0.3u, 0]
         zwei:
           rows.extra:
-            stagger: -1u
+            stagger: -cy
+          rows.unten:
+          rows.oben:
+            shift: [0.3u, 0]
+        drei:
+          rows.extra:
+            stagger: -cy
           rows.unten:
           rows.oben:
   mirror:
-    ref: daumen_zwei_extra
-    distance: 3u
+    ref: daumen_drei_extra
+    distance: 60
+  
