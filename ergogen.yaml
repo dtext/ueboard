@@ -1,21 +1,21 @@
 units:
-  $default_height: cy
   $default_width: cx
+  $default_height: cy
   $default_padding: cy
   $default_spread: cx
+  px: $default_width + 4
+  py: $default_height + 4
 points:
+  key:
+    autobind:
   zones:
-    klein-links:
-      anchor:
-        shift: [-cx, .5cy]
-      columns:
-        col:
-      rows:
-        bottom:
-        top:
     matrix:
       columns:
+        aussen:
+          rows.oben.skip: true
         klein:
+          key:
+            stagger: -.5cy
         ring:
           key:
             splay: -7
@@ -28,14 +28,14 @@ points:
             spread: cx+1
         zeige:
           key.stagger: -3
-        zeige-rechts:
+        innen:
       rows:
         unten:
         mitte:
         oben:
     daumen:
       anchor:
-        ref: matrix_zeige-rechts_unten
+        ref: matrix_innen_unten
         shift: [-17, -52]
         rotate: 55
       columns:
@@ -54,7 +54,39 @@ points:
             stagger: -cy
           rows.unten:
           rows.oben:
-  mirror:
-    ref: daumen_drei_extra
-    distance: 60
-  
+outlines:
+  keys:
+    - what: rectangle
+      where: true
+      size: [$default_width, $default_height]
+  raw:
+    - what: rectangle
+      where: true
+      size: [px, py]
+    - what: polygon
+      operation: add
+      points:
+        - ref: matrix_aussen_mitte
+          shift: [-.5px,.5py]
+        - ref: matrix_ring_oben
+          shift: [-.5px,.5py]
+        - ref: matrix_mittel_oben
+          shift: [-.5px,.5py]
+        - ref: matrix_mittel_oben
+          shift: [.5px,.5py]
+        - ref: matrix_innen_oben
+          shift: [.5px,.5py]
+        - ref: daumen_drei_extra
+          shift: [.5px,-.5py]
+        - ref: daumen_drei_extra
+          shift: [-.5px,-.5py]
+        - ref: daumen_eins_unten
+          shift: [-.5px,-.5py]
+        - ref: daumen_eins_unten
+          shift: [-.5px,.5py]
+        - ref: matrix_klein_unten
+      fillet: 3
+  combined:
+    - name: raw
+    - name: keys
+      operation: subtract
