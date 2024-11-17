@@ -1,0 +1,15 @@
+{
+  "name": "ueboard",
+  "version": "1.0.0",
+  "description": "Ultra Ergonomic Keyboard made for my hands specifically.",
+  "main": "index.js",
+  "repository": "git@github.com:dtext/ueboard.git",
+  "author": "Danny Textores <textores.danny@gmail.com>",
+  "license": "Apache",
+  "dependencies": {
+    "ergogen": "^4.1.0"
+  },
+  "scripts": {
+    "gen": "ergogen ergogen.yaml"
+  }
+}
