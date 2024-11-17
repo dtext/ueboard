@@ -10,6 +10,7 @@ points:
     autobind:
   zones:
     matrix:
+      anchor.rotate: -15
       columns:
         aussen:
           rows.oben.skip: true
@@ -24,7 +25,7 @@ points:
         mittel:
           key:
             splay: -3
-            stagger: 10
+            stagger: 15
             spread: cx+1
         zeige:
           key.stagger: -3
@@ -61,19 +62,15 @@ outlines:
       size: [$default_width, $default_height]
   raw:
     - what: rectangle
-      where: true
+      where: /matrix_(aussen|klein).*/
       size: [px, py]
     - what: polygon
       operation: add
       points:
         - ref: matrix_aussen_mitte
           shift: [-.5px,.5py]
-        - ref: matrix_ring_oben
-          shift: [-.5px,.5py]
         - ref: matrix_mittel_oben
           shift: [-.5px,.5py]
-        - ref: matrix_mittel_oben
-          shift: [.5px,.5py]
         - ref: matrix_innen_oben
           shift: [.5px,.5py]
         - ref: daumen_drei_extra
@@ -82,9 +79,8 @@ outlines:
           shift: [-.5px,-.5py]
         - ref: daumen_eins_unten
           shift: [-.5px,-.5py]
-        - ref: daumen_eins_unten
-          shift: [-.5px,.5py]
         - ref: matrix_klein_unten
+          shift: [.5px,-.5py]
       fillet: 3
   combined:
     - name: raw
