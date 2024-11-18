@@ -22,7 +22,7 @@ points:
         ring:
           key:
             splay: -7
-            stagger: 16
+            stagger: 8
             spread: cx+2
         mittel:
           key:
@@ -30,8 +30,9 @@ points:
             stagger: 15
             spread: cx+1
         zeige:
-          key.stagger: -3
+          key.stagger: -4
         innen:
+          key.stagger: -4
       rows:
         unten:
         mitte:
