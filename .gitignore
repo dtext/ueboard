@@ -1,2 +1,7 @@
 node_modules/
 output/
+
+# kicad
+board-backups/
+board.kicad*
+fp-info-cache
