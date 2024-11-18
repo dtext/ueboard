@@ -10,7 +10,9 @@ points:
     autobind:
   zones:
     matrix:
-      anchor.rotate: -15
+      anchor:
+        rotate: -15
+        shift: [100, -100]
       columns:
         aussen:
           rows.oben.skip: true
@@ -60,7 +62,7 @@ outlines:
     - what: rectangle
       where: true
       size: [$default_width, $default_height]
-  raw:
+  board:
     - what: rectangle
       where: /matrix_(aussen|klein).*/
       size: [px, py]
@@ -83,6 +85,21 @@ outlines:
           shift: [.5px,-.5py]
       fillet: 3
   combined:
-    - name: raw
+    - name: board
     - name: keys
       operation: subtract
+pcbs:
+  ueboard:
+    outlines:
+      main:
+        outline: board
+    footprints:
+      choc_hotswap:
+        what: choc
+        where: true
+        params:
+          keycaps: true
+          reverse: true
+          hotswap: true
+          from: "{{column_net}}"
+          to: "{{colrow}}"
