@@ -47,15 +47,15 @@ points:
           rows.unten:
           rows.oben:
             shift: [0.3u, 0]
-        zwei:
           rows.extra:
-            stagger: -cy
+        zwei:
           rows.unten:
           rows.oben:
             shift: [0.3u, 0]
+          rows.extra:
         drei:
           rows.extra:
-            stagger: -cy
+            stagger: -2cy
           rows.unten:
           rows.oben:
 outlines:
@@ -75,7 +75,7 @@ outlines:
         - ref: matrix_mittel_oben
           shift: [-.5px,.5py]
         - ref: matrix_innen_oben
-          shift: [.5px,.5py]
+          shift: [.5px,.9py]
         - ref: daumen_drei_extra
           shift: [.5px,-.5py]
         - ref: daumen_drei_extra
@@ -83,7 +83,7 @@ outlines:
         - ref: daumen_eins_unten
           shift: [-.5px,-.5py]
         - ref: matrix_klein_unten
-          shift: [.5px,-.5py]
+          shift: [.12px,-.5py]
       fillet: 3
   combined:
     - name: board
