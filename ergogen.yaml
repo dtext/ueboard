@@ -16,49 +16,38 @@ points:
         shift: [ 100, -100 ]
       columns:
         aussen:
-          rows.oben.skip: true
         klein:
-          key:
-            stagger: -.5cy
         ring:
           key:
-            splay: -7
-            stagger: 8
-            spread: cx+2
+            stagger: cy
         mittel:
           key:
-            splay: -3
-            stagger: 15
-            spread: cx+1
+            stagger: .5cy
         zeige:
           key.stagger: -4
         innen:
-          key.stagger: -4
       rows:
         unten:
         mitte:
         oben:
+        zahlen:
     daumen:
       anchor:
         ref: matrix_innen_unten
-        shift: [ -17, -52 ]
-        rotate: 55
+        shift: [-2cx, -2cy]
+        rotate: -15
       columns:
+        null:
+          rows.unten.skip: true
         eins:
-          rows.unten:
-          rows.oben:
-            shift: [ 0.3u, 0 ]
-          rows.extra:
+          key:
         zwei:
-          rows.unten:
-          rows.oben:
-            shift: [ 0.3u, 0 ]
-          rows.extra:
+          key:
         drei:
-          rows.extra:
-            stagger: -2cy
-          rows.unten:
-          rows.oben:
+          rows.unten.skip: true
+      rows:
+        unten:
+        oben:
 outlines:
   keys:
     - what: rectangle
@@ -71,20 +60,22 @@ outlines:
     - what: polygon
       operation: add
       points:
-        - ref: matrix_aussen_mitte
-          shift: [ -.5px,.5py ]
-        - ref: matrix_mittel_oben
-          shift: [ -.5px,.5py ]
-        - ref: matrix_innen_oben
-          shift: [ .5px,.9py ]
-        - ref: daumen_drei_extra
-          shift: [ .5px,-.5py ]
-        - ref: daumen_drei_extra
-          shift: [ -.5px,-.5py ]
-        - ref: daumen_eins_unten
-          shift: [ -.5px,-.5py ]
-        - ref: matrix_klein_unten
-          shift: [ .12px,-.5py ]
+        - ref: matrix_aussen_zahlen
+          shift: [-.5px,.5py]
+        - ref: matrix_mittel_zahlen
+          shift: [-.5px,.5py]
+        - ref: matrix_mittel_zahlen
+          shift: [.5px,.5py]
+        - ref: matrix_innen_zahlen
+          shift: [.5px,.5py]
+        - ref: daumen_drei_oben
+          shift: [.5px,.5py]
+        - ref: daumen_drei_oben
+          shift: [.5px,-.5py]
+        - ref: daumen_zwei_unten
+          shift: [.5px,-.5py]
+        - ref: matrix_aussen_unten
+          shift: [-.5px,-.5py]
       fillet: 3
   combined:
     - name: board
@@ -102,7 +93,7 @@ pcbs:
         outline: board
     footprints:
       choc_hotswap:
-        what: choc
+        what: chocv2
         where: true
         params:
           keycaps: true
