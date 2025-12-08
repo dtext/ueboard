@@ -3,8 +3,9 @@ units:
   $default_height: cy
   $default_padding: cy
   $default_spread: cx
-  px: $default_width + 4
-  py: $default_height + 4
+  px: $default_width + 2
+  py: $default_height + 2
+  case_height: 25
 points:
   key:
     autobind:
@@ -12,7 +13,7 @@ points:
     matrix:
       anchor:
         rotate: -15
-        shift: [100, -100]
+        shift: [ 100, -100 ]
       columns:
         aussen:
           rows.oben.skip: true
@@ -40,18 +41,18 @@ points:
     daumen:
       anchor:
         ref: matrix_innen_unten
-        shift: [-17, -52]
+        shift: [ -17, -52 ]
         rotate: 55
       columns:
         eins:
           rows.unten:
           rows.oben:
-            shift: [0.3u, 0]
+            shift: [ 0.3u, 0 ]
           rows.extra:
         zwei:
           rows.unten:
           rows.oben:
-            shift: [0.3u, 0]
+            shift: [ 0.3u, 0 ]
           rows.extra:
         drei:
           rows.extra:
@@ -62,33 +63,38 @@ outlines:
   keys:
     - what: rectangle
       where: true
-      size: [$default_width, $default_height]
+      size: [ $default_width, $default_height ]
   board:
     - what: rectangle
       where: /matrix_(aussen|klein).*/
-      size: [px, py]
+      size: [ px, py ]
     - what: polygon
       operation: add
       points:
         - ref: matrix_aussen_mitte
-          shift: [-.5px,.5py]
+          shift: [ -.5px,.5py ]
         - ref: matrix_mittel_oben
-          shift: [-.5px,.5py]
+          shift: [ -.5px,.5py ]
         - ref: matrix_innen_oben
-          shift: [.5px,.9py]
+          shift: [ .5px,.9py ]
         - ref: daumen_drei_extra
-          shift: [.5px,-.5py]
+          shift: [ .5px,-.5py ]
         - ref: daumen_drei_extra
-          shift: [-.5px,-.5py]
+          shift: [ -.5px,-.5py ]
         - ref: daumen_eins_unten
-          shift: [-.5px,-.5py]
+          shift: [ -.5px,-.5py ]
         - ref: matrix_klein_unten
-          shift: [.12px,-.5py]
+          shift: [ .12px,-.5py ]
       fillet: 3
   combined:
     - name: board
     - name: keys
       operation: subtract
+cases:
+  case_name:
+    - what: outline
+      name: board
+      extrude: case_height
 pcbs:
   ueboard:
     outlines:
