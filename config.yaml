@@ -93,11 +93,8 @@ pcbs:
         outline: board
     footprints:
       choc_hotswap:
-        what: chocv2
+        what: chocv12
         where: true
         params:
-          keycaps: true
-          reverse: true
-          hotswap: true
           from: "{{column_net}}"
           to: "{{colrow}}"

@@ -8,10 +8,10 @@
   "license": "Apache",
   "dependencies": {
     "@jscad/cli": "1",
-    "ergogen": "^4.1.0"
+    "ergogen": "^4.2.1"
   },
   "scripts": {
-    "gen": "ergogen ergogen.yaml",
-    "stlgen": "npx jscad -v"
+    "gen": "ergogen -d .",
+    "stlgen": "npx jscad --help"
   }
 }
