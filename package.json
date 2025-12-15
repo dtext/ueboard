@@ -7,11 +7,9 @@
   "author": "Danny Textores <textores.danny@gmail.com>",
   "license": "Apache",
   "dependencies": {
-    "@jscad/cli": "1",
     "ergogen": "^4.2.1"
   },
   "scripts": {
-    "gen": "ergogen -d .",
-    "stlgen": "npx jscad --help"
+    "gen": "ergogen -d ."
   }
 }
