@@ -20,21 +20,35 @@ points:
         shift: [ 100, -100 ]
       columns:
         aussen:
+          key:
+            column_net: P0
         klein:
+          key:
+            column_net: P1
         ring:
           key:
+            column_net: P2
             stagger: cy
         mittel:
           key:
+            column_net: P3
             stagger: .5cy
         zeige:
-          key.stagger: -4
+          key:
+            column_net: P4
+            stagger: -4
         innen:
+          key:
+            column_net: P5
       rows:
         unten:
+          row_net: P10
         mitte:
+          row_net: P9
         oben:
+          row_net: P8
         zahlen:
+          row_net: P7
     daumen:
       anchor:
         ref: matrix_innen_unten
@@ -43,15 +57,23 @@ points:
       columns:
         null:
           rows.unten.skip: true
+          key:
+            column_net: P2
         eins:
           key:
+            column_net: P3
         zwei:
           key:
+            column_net: P4
         drei:
           rows.unten.skip: true
+          key:
+            column_net: P5
       rows:
         unten:
+          row_net: P6
         oben:
+          row_net: P6
 
 outlines:
   keys:
@@ -100,6 +122,14 @@ pcbs:
         params:
           from: "{{column_net}}"
           to: "{{colrow}}"
+      diode:
+        what: diode
+        where: true
+        params:
+          from: "{{colrow}}"
+          to: "{{row_net}}"
+        adjust:
+          shift: [ 0, -5 ]
       xiao:
         what: xiao
         where:
