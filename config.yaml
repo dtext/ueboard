@@ -6,6 +6,10 @@ units:
   px: $default_width + 2
   py: $default_height + 2
   case_height: 25
+  xiao_w: 17.8
+  xiao_y: xiao_w + 2
+  xiao_h: 21
+  xiao_usb: 2
 points:
   key:
     autobind:
@@ -48,6 +52,7 @@ points:
       rows:
         unten:
         oben:
+
 outlines:
   keys:
     - what: rectangle
@@ -60,14 +65,10 @@ outlines:
     - what: polygon
       operation: add
       points:
-        - ref: matrix_aussen_zahlen
-          shift: [-.5px,.5py]
         - ref: matrix_mittel_zahlen
-          shift: [-.5px,.5py]
+          shift: [-3px -5,.5py]
         - ref: matrix_mittel_zahlen
-          shift: [.5px,.5py]
-        - ref: matrix_innen_zahlen
-          shift: [.5px,.5py]
+          shift: [2.5px,.5py]
         - ref: daumen_drei_oben
           shift: [.5px,.5py]
         - ref: daumen_drei_oben
@@ -88,6 +89,7 @@ cases:
       extrude: case_height
 pcbs:
   ueboard:
+    template: kicad8
     outlines:
       main:
         outline: board
@@ -98,3 +100,9 @@ pcbs:
         params:
           from: "{{column_net}}"
           to: "{{colrow}}"
+      xiao:
+        what: xiao
+        where:
+          ref: matrix_aussen_zahlen
+          shift: [1, xiao_y]
+          rotate: 90
