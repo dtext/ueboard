@@ -129,7 +129,7 @@ pcbs:
           from: "{{colrow}}"
           to: "{{row_net}}"
         adjust:
-          shift: [ 0, -5 ]
+          shift: [ 0, -3 ]
       xiao:
         what: xiao
         where:
