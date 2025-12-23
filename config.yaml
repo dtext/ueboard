@@ -120,14 +120,18 @@ pcbs:
         params:
           from: "{{column_net}}"
           to: "{{colrow}}"
-      diode:
-        what: smd_diode
-        where: true
-        params:
-          from: "{{colrow}}"
-          to: "{{row_net}}"
-        adjust:
-          shift: [ 0, -5 ]
+          to_diode: "{{row_net}}"
+          side: B
+          reversible: true
+          hotswap: true
+          hotswap_pads_same_side: false
+          include_traces_vias: true
+          locked_traces_vias: true
+          include_keycap: false
+          include_smd_diodes: true
+          include_corner_marks: false
+          include_stabilizer_pad: true
+          oval_stabilizer_pad: false
       xiao:
         what: xiao
         where:
