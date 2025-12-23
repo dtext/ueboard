@@ -15,8 +15,7 @@ points:
   zones:
     matrix:
       anchor:
-        rotate: -15
-        shift: [ 100, -100 ]
+        shift: [25, -100]
       columns:
         aussen:
           key:
