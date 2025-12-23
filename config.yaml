@@ -122,13 +122,13 @@ pcbs:
           from: "{{column_net}}"
           to: "{{colrow}}"
       diode:
-        what: diode
+        what: smd_diode
         where: true
         params:
           from: "{{colrow}}"
           to: "{{row_net}}"
         adjust:
-          shift: [ 0, -3 ]
+          shift: [ 0, -5 ]
       xiao:
         what: xiao
         where:
