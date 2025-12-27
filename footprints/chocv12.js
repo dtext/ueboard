@@ -758,12 +758,13 @@ module.exports = {
       final += keycap_3dmodel
     }
 
+    const diodeYOffset = 5
     if (p.include_smd_diodes) {
       if (p.reversible || p.side == "F") {
-        final += make_diode(5, "F")
+        final += make_diode(diodeYOffset, "F")
       }
       if (p.reversible || p.side == "B") {
-        final += make_diode(5, "B")
+        final += make_diode(diodeYOffset, "B")
       }
     }
 
@@ -776,6 +777,71 @@ module.exports = {
       } else {
         final += hotswap_routes_unplated
       }
+    }
+
+    const viaXOffset = 1.5
+    if (p.reversible && p.include_smd_diodes && p.include_traces_vias) {
+      final += `
+      ${'' /* routing for external pad */}
+      (segment
+        (start ${p.eaxy(-1.65, diodeYOffset)})
+        (end ${p.eaxy(-1.65 - viaXOffset, diodeYOffset)})
+        (width ${p.trace_width})
+        (locked ${p.locked_traces_vias ? 'yes' : 'no'})
+        (layer "F.Cu")
+        (net ${p.to.index})
+      )
+      (segment
+        (start ${p.eaxy(-1.65, diodeYOffset)})
+        (end ${p.eaxy(-1.65 - viaXOffset, diodeYOffset)})
+        (width ${p.trace_width})
+        (locked ${p.locked_traces_vias ? 'yes' : 'no'})
+        (layer "B.Cu")
+        (net ${p.to.index})
+      )
+      (via
+        (at ${p.eaxy(-1.65 - viaXOffset, diodeYOffset)})
+        (size ${p.via_size})
+        (drill ${p.via_drill})
+        (layers "F.Cu" "B.Cu")
+        (locked ${p.locked_traces_vias ? 'yes' : 'no'})
+        (net ${p.to.index})
+	    )
+      ${'' /* routing for internal pad */}
+      (segment
+        (start ${p.eaxy(1.65, diodeYOffset)})
+        (end ${p.eaxy(1.65 + viaXOffset, diodeYOffset)})
+        (width ${p.trace_width})
+        (locked ${p.locked_traces_vias ? 'yes' : 'no'})
+        (layer "F.Cu")
+        (net ${p.to.index})
+      )
+      (segment
+        (start ${p.eaxy(1.65, diodeYOffset)})
+        (end ${p.eaxy(1.65 + viaXOffset, diodeYOffset)})
+        (width ${p.trace_width})
+        (locked ${p.locked_traces_vias ? 'yes' : 'no'})
+        (layer "B.Cu")
+        (net ${p.to.index})
+      )
+      (via
+        (at ${p.eaxy(1.65 + viaXOffset, diodeYOffset)})
+        (size ${p.via_size})
+        (drill ${p.via_drill})
+        (layers "F.Cu" "B.Cu")
+        (locked ${p.locked_traces_vias ? 'yes' : 'no'})
+        (net ${p.to.index})
+	    )
+	    ${'' /* connect internal pad */}
+	    (segment
+        (start ${p.eaxy(1.65 + viaXOffset, -1.896)})
+        (end ${p.eaxy(1.65 + viaXOffset, diodeYOffset)})
+        (width ${p.trace_width})
+        (locked ${p.locked_traces_vias ? 'yes' : 'no'})
+        (layer "B.Cu")
+        (net ${p.to.index})
+      )
+      `
     }
 
     return final;
