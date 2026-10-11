@@ -74,21 +74,27 @@ points:
           row_net: P6
 
 outlines:
-  keys:
+  _keys:
     - what: rectangle
       where: true
-      size: [ $default_width, $default_height ]
+      size: [ $default_width - 1, $default_height - 1 ]
+  _switch_holes:
+    - what: rectangle
+      where: true
+      size: [ 14, 14 ]
   board:
     - what: rectangle
-      where: /matrix_(aussen|klein).*/
+      where: true
       size: [ px, py ]
     - what: polygon
       operation: add
       points:
+        - ref: matrix_aussen_zahlen
+          shift: [-.5px,.5py]
         - ref: matrix_mittel_zahlen
-          shift: [-3px -5,.5py]
+          shift: [ -2.5px,.5py ]
         - ref: matrix_mittel_zahlen
-          shift: [2.5px,.5py]
+          shift: [2cx+0.5px,.5py]
         - ref: daumen_drei_oben
           shift: [.5px,.5py]
         - ref: daumen_drei_oben
@@ -98,12 +104,20 @@ outlines:
         - ref: matrix_aussen_unten
           shift: [-.5px,-.5py]
       fillet: 3
-  combined:
+  preview:
     - name: board
-    - name: keys
+    - name: _keys
+      operation: subtract
+  plate:
+    - name: board
+    - name: _switch_holes
       operation: subtract
 cases:
-  case_name:
+  plate:
+    - what: outline
+      name: plate
+      extrude: 0.5
+  case:
     - what: outline
       name: board
       extrude: case_height
@@ -136,5 +150,4 @@ pcbs:
         what: xiao
         where:
           ref: matrix_ring_zahlen
-          shift: [-xiao_h -xiao_usb, 5]
-          rotate: 90
+          shift: [-xiao_h -xiao_usb, 6]
